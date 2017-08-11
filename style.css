@@ -5,5 +5,7 @@ main {
 }
 
 #spr {
-	font-size:20px;
+	font-size: xx-large;
+	font-size: -webkit-xxx-large;
+	font-weight: bold;
 }
