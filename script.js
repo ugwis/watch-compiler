@@ -25,7 +25,7 @@ xhr.onreadystatechange = function() {
                 var data = xhr.responseText;
                 console.log( 'COMPLETE! :'+data );
 				var time = new Date() - request_time;
-				document.getElementById('spr').innerHTML = time + " sec/req"
+				document.getElementById('spr').innerHTML = time;
 				setTimeout(time_req, 1000);
             } else {
                 console.log( 'Failed. HttpStatus: '+xhr.statusText );
