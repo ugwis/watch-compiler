@@ -37,7 +37,7 @@ xhr.onreadystatechange = function() {
 
 function time_req(){
 	request_time = new Date();
-	xhr.open( 'POST', 'https://compiler.ugwis.net/api/run', false );
+	xhr.open( 'POST', 'https://compiler.ugwis.net/api/run', true );
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhr.send("language=" + language + "&source_code=" + source_code + "&input=" + input)
 	console.log("time_req();");
