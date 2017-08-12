@@ -30,6 +30,7 @@ xhr.onreadystatechange = function() {
 				setTimeout(time_req, 1000);
             } else {
                 console.log( 'Failed. HttpStatus: '+xhr.statusText );
+				setTimeout(time_req, 10000);
             }
             break;
     }
