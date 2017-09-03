@@ -25,9 +25,10 @@ xhr.onreadystatechange = function() {
                 var data = xhr.responseText;
                 console.log( 'COMPLETE! :'+data );
 				var time = new Date() - request_time;
-				document.getElementById('spr').innerHTML = time;
+				document.getElementById(request_queries[queries_index].selector).children[1].innerHTML = time;
 				xhr.abort();
 				setTimeout(time_req, 1000);
+				queries_index=(queries_index+1)%request_queries.length				
             } else {
                 console.log( 'Failed. HttpStatus: '+xhr.statusText );
 				setTimeout(time_req, 10000);
@@ -36,13 +37,20 @@ xhr.onreadystatechange = function() {
     }
 };
 
+var request_queries = [
+	{selector: "pretime", query: "language=" + language + "&source_code=" + source_code + "&input=" + input + "&precompile=true"},
+	{selector: "exetime", query: "language=" + language + "&source_code=" + source_code + "&input=" + input + ""},
+	{selector: "totaltime", query: "language=" + language + "&source_code=" + source_code + "&input=" + input + "&nocache=true"}
+]
+
+var queries_index = 0;
+
 function time_req(){
 	request_time = new Date();
 	xhr.open( 'POST', 'https://compiler.ugwis.net/api/run', true );
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhr.send("language=" + language + "&source_code=" + source_code + "&input=" + input)
+	xhr.send(request_queries[queries_index].query);
 	console.log("time_req();");
-	document.getElementById('rps');
 }
 
 window.onload = function(){
