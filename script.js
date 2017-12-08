@@ -46,7 +46,7 @@ var queries_index = 0;
 
 function time_req(){
 	request_time = new Date();
-	xhr.open( 'POST', 'http://compiler.ugwis.net' + request_queries[queries_index].endpoint, true );
+	xhr.open( 'POST', '//compiler.ugwis.net' + request_queries[queries_index].endpoint, true );
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhr.send(request_queries[queries_index].query);
 	console.log("time_req();");
